@@ -1,0 +1,41 @@
+<%- include('../header') %>
+
+<div class="panel panel-info">
+    <div class="panel-heading">词性添加</div>
+    <div class="panel-body" style="padding: 0px">
+        <table class="table table-bordered " style="margin: 0px">
+            <tr>
+                <td>词性名称: </td>
+                <td>
+                    <input type="text" id="wordTypeName" name="wordTypeName" class="form-control" placeholder="Name" />
+                </td>
+            </tr>
+            <tr>
+                <td>词性ID: </td>
+                <td>
+                    <input type="text" id="wordTypeId" name="wordTypeId" class="form-control" placeholder="Id" />
+                </td>
+            </tr>
+            <tr>
+                <td>中文名称: </td>
+                <td>
+                    <input type="text" id="wordTypeCName" name="wordTypeCsName" class="form-control" placeholder="Name_Cn" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" id="btn_wordType_add" name="btn_wordType_add" class="btn btn-success">添加</button>
+                </td>
+                <td>
+                    <button type="button" id="btn_wordType_clear" name="btn_wordType_clear" class="btn btn-warning">清空</button>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="6"><font color="#FF0000" size="3">说明</font>: 相同优先级词性之间用","(英文逗号)隔开, 不同优先级用"&gt;"隔开;&nbsp;&nbsp;词性的名称和id必须唯一</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<%- include('../footer') %>
