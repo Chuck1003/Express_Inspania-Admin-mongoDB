@@ -2,13 +2,15 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 // 起一个MongoDB服务，链接本地MongoDB服务器，页面操作数据
+var session = require("express-session");
+var MongoStore=require('connect-mongo')(session);
+var db = require('./db');
 
-var rediz = require('redis');
-// var redis =rediz.createClient({ "host": "127.0.0.1", "port": "6379" });//起一个服务，接bluebird，异步数据存储、读取...
-// redis.on('error', function (err) { console.log('errorevent - ' + redis.host + ':' + redis.port + ' - ' + err); });
+var router = require('./router');
 
 var app = express();
 
@@ -17,12 +19,22 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var router = require('./router');
+// MongoDB服务
+app.use(session({
+    secret: "Ekko",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection:db.dbCon
+    })
+}));
+
+// !!!!!! 所有的中间件都需要放在路由的上面，这样才能在路由req中获取到中间件的值  !!!!!!
 app.use('/', router);
 
 // catch 404 and forward to error handler

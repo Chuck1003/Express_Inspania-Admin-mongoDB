@@ -1,0 +1,32 @@
+<%- include('header') %>
+
+<div id="App">
+    <div class="panel panel-info">
+        <div class="panel-heading">用户登录</div>
+        <div class="panel-body" style="padding: 0px">
+            <table class="table table-bordered " style="margin: 0px">
+                <tr>
+                    <td>姓名: </td>
+                    <td>
+                        <input type="text" name="name" class="form-control" placeholder="name" v-model="user.name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>密码: </td>
+                    <td>
+                        <input type="text" name="password" class="form-control" placeholder="password" v-model="user.password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center">
+                        <button type="button" name="login" class="btn btn-info" style="margin: 0 30px;" @click="login">登 录</button>
+                        <button type="button" name="goreg" class="btn btn-success" style="margin: 0 30px;" @click="goreg">去注册</button>
+                        <button type="button" name="clear" class="btn btn-warning" style="margin: 0 30px;" @click="clearInput">清 空</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>

@@ -8240,6 +8240,6 @@ body.md-skin {
 .fixednav .navbar-static-top {
 	border-bottom: 1px solid #e7eaec !important;
 }
-.mini-navbar .fixednav {
+.body-small .fixednav, .mini-navbar .fixednav {
 	padding-left: 0;
 }

@@ -2,18 +2,22 @@
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="javascript:;"><i class="fa fa-bars"></i> </a>
-            <!-- <div style="position:relative;top:2px;margin-left:70px;font-size: 24px;line-height:53px;font-weight: bolder;text-align: center;
-                text-shadow: 3px 2px 5px #b7adab;width: 200px;">
-                <p>Inspania-Admin</p>
-            </div> -->
+            <div style="position:relative;top:2px;margin-left:70px;font-size: 24px;line-height:53px;font-weight: bolder;text-align: center;
+            	text-shadow: 3px 2px 5px #b7adab;">
+            	<p>图书管理系统</p>
+           	</div>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">Welcome&nbsp;&nbsp;xf_Chen</span>
+                <span class="m-r-sm text-muted welcome-message"><%= user.name != '-1' ? 'Welcome  ' + user.name : '' %></span>
             </li>
             <li>
-                <a href="javascript:;">
-                    <i class="fa fa-sign-out"></i>Log out
+                <a href="<%= user && user.name ? './logout' : './login' %>">
+                    <% if(user && user.name != '-1'){ %>
+                        <i class="fa fa-sign-out"></i>Log out
+                    <% }else{ %>
+                        <i class="fa fa-sign-in"></i>Log in
+                    <% } %>
                 </a>
             </li>
         </ul>
