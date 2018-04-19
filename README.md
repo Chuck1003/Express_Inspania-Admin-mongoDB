@@ -1,10 +1,14 @@
 基于Node.js，Express起服务；
+http://www.expressjs.com.cn/
+https://ejs.bootcss.com/
 
 数据库使用MongoDB，使用mongoose中间件；
+http://www.cnblogs.com/myzhibie/p/4445577.html
 
 登录使用express-session中间件，数据存在MongoDB中；
 
 Inspania-Admin 做Web框架的一套后台系统；
+https://github.com/Chuck1003/inspinia_admin
 
 样式使用了bootstrap、前端脚本使用Vue、组件使用了toastr/sweetalert等；
 
@@ -24,3 +28,5 @@ Inspania-Admin 做Web框架的一套后台系统；
     logappend=true
     
   就成功解决了这个问题；具体原因不详！有大神知道的指教一下！！！
+  
+ 以上所有链接都给自己这次开发过程中带来巨大帮助，感谢！也提供出来供大家参考。
