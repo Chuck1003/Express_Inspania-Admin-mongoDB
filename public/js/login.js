@@ -30,7 +30,7 @@ var login = new Vue({
             ajaxReq('./login','POST',{name: _obj.name,password: _obj.password},function(re){
                 if(re.isSuccess){
                     toastr.success(re.msg);
-                    setTimeout(function(){self.goIndex()},500);
+                    setTimeout(function(){self.goIndex()},300);
                 }
                 !re.isSuccess && toastr.error(re.msg);
                 self.user = {

@@ -5,48 +5,40 @@ var Book = require('./models/book');
 var User = require('./models/users');
 
 router.get('/', function(req, res, next) {
-    isLogin(req, res, next);
-    res.render('index',{title: '图书管理',pagename: 'index',page: [0,0],user: req.session.user});
+    isLogin(req, res, next) && res.render('index',{title: '图书管理',pagename: 'index',page: [0,0],user: req.session.user});
 });
 router.get('/users', function(req, res, next) {
-    isLogin(req, res, next);
-    res.render('./index/users',{title: '欢迎登陆',pagename: 'users',page: [0,1],user: req.session.user});
+    isLogin(req, res, next) && res.render('./index/users',{title: '欢迎登陆',pagename: 'users',page: [0,1],user: req.session.user});
 });
 router.get('/infos', function(req, res, next) {
-    isLogin(req, res, next);
-    res.render('./index/infos',{title: '最新通知',pagename: 'infos',page: [0,2],user: req.session.user});
+    isLogin(req, res, next) && res.render('./index/infos',{title: '最新通知',pagename: 'infos',page: [0,2],user: req.session.user});
 });
 
 router.get('/location', function(req, res, next) {
-    isLogin(req, res, next);
-    res.render('./search/location',{title: '楼层定位',pagename: 'location',page: [1,0],user: req.session.user});
+    isLogin(req, res, next) && res.render('./search/location',{title: '楼层定位',pagename: 'location',page: [1,0],user: req.session.user});
 });
 router.get('/type', function(req, res, next) {
-    res.render('./search/type',{title: '类别搜索',pagename: 'type',page: [1,1],user: req.session.user});
+    isLogin(req, res, next) && res.render('./search/type',{title: '类别搜索',pagename: 'type',page: [1,1],user: req.session.user});
 });
 
 router.get('/all', function(req, res, next) {
-    isLogin(req, res, next);
-    res.render('./floor/all',{title: '所有楼层',pagename: 'all',page: [2,0],user: req.session.user});
+    isLogin(req, res, next) && res.render('./floor/all',{title: '所有楼层',pagename: 'all',page: [2,0],user: req.session.user});
 });
 router.get('/current', function(req, res, next) {
-    res.render('./floor/current',{title: '单层导航',pagename: 'current',page: [2,1],user: req.session.user});
+    isLogin(req, res, next) && res.render('./floor/current',{title: '单层导航',pagename: 'current',page: [2,1],user: req.session.user});
 });
 
 router.get('/borrow', function(req, res, next) {
-    isLogin(req, res, next);
-    res.render('./atm/borrow',{title: '自助借书',pagename: 'borrow',page: [3,0],user: req.session.user});
+    isLogin(req, res, next) && res.render('./atm/borrow',{title: '自助借书',pagename: 'borrow',page: [3,0],user: req.session.user});
 });
 router.get('/return', function(req, res, next) {
-    isLogin(req, res, next);
-    res.render('./atm/return',{title: '自助还书',pagename: 'return',page: [3,1],user: req.session.user});
+    isLogin(req, res, next) && res.render('./atm/return',{title: '自助还书',pagename: 'return',page: [3,1],user: req.session.user});
 });
 
 router.get('/login',function(req, res, next){
     res.render('./login',{title: '用户登录',pagename: 'login',page: [-1,-1],user: req.session.user});
 });
 router.get('/reg',function(req, res, next){
-    isLogin(req, res, next);
     res.render('./reg',{title: '用户注册',pagename: 'reg',page: [-1,-1],user: req.session.user});
 });
 router.get('/logout',function(req, res, next){
@@ -200,9 +192,11 @@ router.post('/login',function(req, res){
 
 // 登录判断
 function isLogin(req, res, next){
-    if(!req.session.user){
+    if(!(req.session.user && req.session.user.name != -1)){
         res.redirect('./login');
+        return false;
     }
+    return true;
 }
 
 module.exports = router;
