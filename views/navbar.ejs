@@ -9,11 +9,11 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message"><%= user.name != '-1' ? 'Welcome  ' + user.name : '' %></span>
+                <span class="m-r-sm text-muted welcome-message"><%= locals.user && locals.user.name != '-1' ? 'Welcome  ' + locals.user.name : '' %></span>
             </li>
             <li>
-                <a href="<%= user && user.name ? './logout' : './login' %>">
-                    <% if(user && user.name != '-1'){ %>
+                <a href="<%= locals.user && locals.user.name ? './logout' : './login' %>">
+                    <% if(locals.user && locals.user.name != '-1'){ %>
                         <i class="fa fa-sign-out"></i>Log out
                     <% }else{ %>
                         <i class="fa fa-sign-in"></i>Log in
