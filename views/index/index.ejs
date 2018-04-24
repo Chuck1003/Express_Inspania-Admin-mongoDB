@@ -94,6 +94,12 @@
             </table>
         </div>
     </div>
+
+    <!-- page plugin -->
+    <nav aria-label="Page navigation">
+        <span class="navMsg" style="line-height: 28px;">&nbsp;当前第：{{pageIndex}}/{{Math.ceil(total/pageSize)}}页，每页{{pageSize}}条，总{{total}}条</span>
+        <ul class="pagination" id="pagination" style="margin: 0;float: right;"></ul>
+    </nav>
 </div>
 
 <%- include('../footer') %>

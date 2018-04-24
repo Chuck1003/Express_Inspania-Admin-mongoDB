@@ -6,10 +6,13 @@ var index = new Vue({
             type: -1,
             place: ''
         },
-        bookList: []
+        bookList: [],
+        total: 0,
+        pageIndex: 1,
+        pageSize: 10
     },
     created: function(){
-        this.getBookList();
+        this.getBookList(1,10);
     },
     methods: {
         clearInput(){
@@ -27,7 +30,7 @@ var index = new Vue({
                 return false;
             }
             ajaxReq('./addBook','POST',{name: self.newBook.name,type: self.newBook.type,place: self.newBook.place},function(re){
-                re.isSuccess && toastr.success(re.msg) && self.getBookList();
+                re.isSuccess && toastr.success(re.msg) && setTimeout(function(){location.reload();},300);
                 !re.isSuccess && toastr.error(re.msg);
                 self.newBook = {
                     name: '',
@@ -52,7 +55,10 @@ var index = new Vue({
                 closeOnConfirm: true
             },function(){
                 ajaxReq('./deleteBook','POST',{id:id},function(re){
-                    re.isSuccess && toastr.success(re.msg) && self.getBookList();
+                    if(re.isSuccess){
+                        toastr.success(re.msg);
+                        setTimeout(function(){location.reload();},300);
+                    }
                     !re.isSuccess && toastr.error(re.msg);
                 })
             })
@@ -69,15 +75,31 @@ var index = new Vue({
                 toastr.error("编辑失败!");
             })
         },
-        getBookList(){
+        getBookList(pageIndex,pageSize){
             var self = this;
-            ajaxReq('./getBookList','GET',{pageIndex: 1, pageSize: 10},function(re){
+            ajaxReq('./getBookList','GET',{pageIndex: pageIndex, pageSize: pageSize},function(re){
                 if(re.isSuccess){
                     self.bookList = re.bookList;
-                    return;
+                    self.total = re.total;
+                    self.pageIndex = re.pageIndex;
+                    self.pageSize = re.pageSize;
+
+                    var totalpage = Math.ceil(self.total/self.pageSize);
+                    self.page(totalpage, totalpage > 5 ? 5 : totalpage);
+                }else{
+                    toastr.error("暂无图书");
                 }
-                toastr.error("暂无图书");
             })
+        },
+        page(totalPages,visiblePages,page){
+            var self = this;
+            $('#pagination').twbsPagination({
+                totalPages: totalPages,
+                visiblePages: visiblePages,
+                onPageClick: function (event, page) {
+                    self.getBookList(page,10);
+                }
+            });
         }
     }
 })

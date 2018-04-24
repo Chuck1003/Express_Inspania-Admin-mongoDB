@@ -58,7 +58,9 @@ router.get('/getBookList',function(req, res){
             data.isSuccess = false;
             data.bookList = [];
         }
-        data.bookList = posts;
+        data.total = posts.length;
+        data.pageSize = parseInt(req.query.pageSize);
+        data.pageIndex = parseInt(req.query.pageIndex);
 
         //获取图书最大ID
         var max = posts[posts.length-1].id;
@@ -66,6 +68,7 @@ router.get('/getBookList',function(req, res){
             maxid: max
         }})
 
+        data.bookList = posts.splice((req.query.pageIndex - 1) * 10, req.query.pageSize);
         return res.json(data);
     }).sort({id: 1});
 });
