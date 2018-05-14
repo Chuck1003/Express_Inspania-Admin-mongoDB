@@ -40,6 +40,7 @@ var index = new Vue({
             })
         },
         edit(index){
+            // 编辑之前需要把当前所有数据存储下来，取消的时候替换回去！！！缺失
             var self = this;
             self.bookList[index].editable = !self.bookList[index].editable ? 1 : 0;
         },

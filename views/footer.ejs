@@ -14,9 +14,16 @@
 	<script src="./js/inspinia.js"></script>
 	<script src="./js/vue.min.js"></script>
 	<script src="./js/common.js"></script>
+
+	<% if (pagename == 'users') { %>
+		<script src="./js/react.production.min.js"></script>
+		<script src="./js/react-dom.production.min.js"></script>
+	<% } %>
+
 	<% if (pagename) { %>
 		<script src="<%='./js/'+ pagename +'.js'%>"></script>
 	<% } %>
+
 </body>
 
 </html>

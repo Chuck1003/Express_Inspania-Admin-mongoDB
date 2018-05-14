@@ -41,3 +41,10 @@ var login = new Vue({
         }
     }
 })
+
+document.onkeydown = function(e){
+    var key = e.which || window.event.keyCode;
+    if(key == 13){
+        login.login();
+    }
+}

@@ -3,12 +3,12 @@ console.log('React Demo Page');
 class Welcome extends React.Component {
     render() {
         return (
-            React.createElement("h1", null, "Hello, React!")
+            <h1>Hello, React!</h1>
         )
     }
 }
 
-const element = React.createElement(Welcome, null);
+const element = <Welcome />;
 
 ReactDOM.render(
     element,

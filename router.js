@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     isLogin(req, res, next) && res.render('index',{title: '图书管理',pagename: 'index',page: [0,0],user: req.session.user});
 });
 router.get('/users', function(req, res, next) {
-    isLogin(req, res, next) && res.render('./index/users',{title: '欢迎登陆',pagename: 'users',page: [0,1],user: req.session.user});
+    isLogin(req, res, next) && res.render('./index/users',{title: 'React Demo',pagename: 'users',page: [0,1],user: req.session.user});
 });
 router.get('/infos', function(req, res, next) {
     isLogin(req, res, next) && res.render('./index/infos',{title: '最新通知',pagename: 'infos',page: [0,2],user: req.session.user});
