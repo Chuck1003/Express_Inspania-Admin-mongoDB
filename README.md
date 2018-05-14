@@ -30,3 +30,6 @@ https://github.com/Chuck1003/inspinia_admin
   就成功解决了这个问题；具体原因不详！有大神知道的指教一下！！！
   
  以上所有链接都给自己这次开发过程中带来巨大帮助，感谢！也提供出来供大家参考。
+
+
+user 页面做react的demo实验，脱离了react的脚手架返现return回来的总是报一个 < 的错误，原因是jsx没有编译，所以在引用了react的两个js之后还需要安装一个jsx的编译工具，具体工具选择可以看个人爱好，推荐看该地址：http://i5ting.github.io/reactjs-getting-start/，三种方式编译jsx文件。
