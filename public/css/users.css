@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: -webkit-flex;
+  display: flex;
+}
+.header strong {
+  flex: 1;
+}
+.header strong:first-child {
+  font-size: large;
+}
+.header strong:last-child {
+  text-align: right;
+}
+ul.list {
+  list-style: none;
+}

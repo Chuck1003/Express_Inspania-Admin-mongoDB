@@ -26,11 +26,13 @@ https://github.com/Chuck1003/inspinia_admin
     logpath=D:\MongoDB\logs\mongodb.log
     ##错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件，而不是从新创建一个新文件
     logappend=true
-    
+
   就成功解决了这个问题；具体原因不详！有大神知道的指教一下！！！
-  
+
  以上所有链接都给自己这次开发过程中带来巨大帮助，感谢！也提供出来供大家参考。
 
 
 2018.5.14:
 User 页面拎出来做react的demo实验，脱离了react的脚手架发现return回来的总是报一个 < 的错误，原因是jsx没有编译，所以在引用了react的两个js之后还需要安装一个jsx的编译工具，具体工具选择可以看个人爱好，推荐看该地址：http://i5ting.github.io/reactjs-getting-start/，三种方式编译jsx文件。
+/**当前编译选择：react-tools  项目根目录下执行 jsx public/react/ public/js -w 即可。*/
+脚本和样式监听编译，改用gulp，根目录下执行 gulp 即可。
