@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.allIn {
+    width: 100%;
+    // height: 100%;
+    height: 1000px;
+    // 公共样式部分
+    .partIn {
+        padding: 5px 10px;
+        .parent {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            border: dashed 1px #ccc;
+            .child {
+                border: dotted 1px #ccc;
+                margin: 3px;
+            }
+        }
+    }
+
+    /**
+    * 大部分不支持center属性，根据定位祖先元素中心点为参考(实现上下左右居中的一种方案)；
+    * static/relative/absolute/(center/page =用的很少)/sticky(苹果手机吸附效果)
+    **/
+    .position {
+        .child {
+            position: center;
+            // top: 50%;
+            // left: 50%;
+        }
+    }
+    // 此属性将被废弃，推荐使用clip-path代替(上右下左，下列：从左起第50像素一直到最右边剪切掉，从上起第20像素到最下面剪切掉)；
+    .clip {
+        .child {
+            position: absolute;
+            clip: rect(auto 50px 20px auto);
+        }
+    }
+
+    // flex布局，将来的主流布局；
+    .display {
+        .parent {
+            display: -webkit-flex;
+            display: flex;
+        }
+        .child {
+            // flex-direction: row;
+            // flex-wrap: nowrap;
+            // flex-grow: 1;
+            // justify-content: space-between;
+            flex: auto;
+        }
+    }
+
+    // border边框(border-radius/box-shadow)
+
+
+    // background背景
+    .background {
+        .parent {
+            background: url(../../img/Koala.jpg) no-repeat;
+            background-attachment: scroll;      //scroll 背景只跟着祖先元素滚动，local背景跟着内容元素滚动；
+            background-position: center;    //两个值，横向纵向，默认0%，0%;
+            background-size: cover;
+            height: 200px;
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        .child {
+            height: 210px;
+        }
+    }
+
+    //opacity
+    .opacity {
+        opacity: .5;
+        filter: alpha(opacity=50);      //IE 滤镜属性，实现透明效果；
+    }
+
+    .text {
+        .child {
+            background: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(right, transparent, white); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(right, transparent, white); /* Firefox 3.6 - 15 */
+            background: linear-gradient(to right, transparent, white); /* 标准的语法 */
+            p {
+                text-transform: capitalize;
+                white-space: nowrap;        //文本换行、强制一行显示；
+                word-break: break-all;      //文字换行、可换行，其他不换行；
+                word-wrap: break-word;      //normal溢出，换行，单词内部允许断行；
+
+                text-overflow: ellipsis;        //内联内容溢出容器时，将溢出部分用...代替；
+
+                zoom: 1;                    //内容缩放比，数值或者百分比；
+            }
+        }
+    }
+}

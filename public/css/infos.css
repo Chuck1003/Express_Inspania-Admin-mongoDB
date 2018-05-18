@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.allIn {
+  width: 100%;
+  height: 1000px;
+  /**
+    * 大部分不支持center属性，根据定位祖先元素中心点为参考(实现上下左右居中的一种方案)；
+    * static/relative/absolute/(center/page =用的很少)/sticky(苹果手机吸附效果)
+    **/
+}
+.allIn .partIn {
+  padding: 5px 10px;
+}
+.allIn .partIn .parent {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  border: dashed 1px #ccc;
+}
+.allIn .partIn .parent .child {
+  border: dotted 1px #ccc;
+  margin: 3px;
+}
+.allIn .position .child {
+  position: center;
+}
+.allIn .clip .child {
+  position: absolute;
+  clip: rect(auto 50px 20px auto);
+}
+.allIn .display .parent {
+  display: -webkit-flex;
+  display: flex;
+}
+.allIn .display .child {
+  flex: auto;
+}
+.allIn .background .parent {
+  background: url(../../img/Koala.jpg) no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  overflow-y: auto;
+}
+.allIn .background .parent::-webkit-scrollbar {
+  display: none;
+}
+.allIn .background .child {
+  height: 210px;
+}
+.allIn .opacity {
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+.allIn .text .child {
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), #ffffff);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, transparent, white);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, transparent, white);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, transparent, white);
+  /* 标准的语法 */
+}
+.allIn .text .child p {
+  text-transform: capitalize;
+  white-space: nowrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  zoom: 1;
+}
