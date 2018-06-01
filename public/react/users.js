@@ -216,6 +216,10 @@ class User extends React.Component {
                     <p>/** 5.表单，所有的表单使用value，onChange，onSubmit等事件来绑定（同vue） */</p>
                     <Form />
                 </pre>
+
+                <pre>
+                    <p>/** 高级指引 **/</p>
+                </pre>
             </div>
         )
     }
