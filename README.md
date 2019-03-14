@@ -1,3 +1,5 @@
+启动服务： npm run start || vscode F5;
+
 基于Node.js，Express起服务；
 http://www.expressjs.com.cn/
 https://ejs.bootcss.com/
